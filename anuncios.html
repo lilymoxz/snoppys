@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anuncios | Snoopy Club</title>
+    <link rel="stylesheet" href="anuncios.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="navbar">
+        <a href="index.html" class="brand">
+            <span class="logo">
+                <svg viewBox="0 0 40 32" aria-hidden="true">
+                    <path d="M10 25C4 25 2 21 3 16c1-5 6-7 11-6
+                    C16 3 23 2 27 8c7-1 11 3 10 9
+                    0 5-4 8-9 8H10Z" fill="#29211e"/>
+                </svg>
+            </span>
+            <span class="brand-name">SNOOPYCLUB</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">About us</a>
+            <a href="integrantes.html">Integrantes</a>
+            <a href="games.html">Games</a>
+            <a href="personajes.html">Personajes</a>
+            <a href="anuncios.html" class="active">Anuncios</a>
+            <a href="comentarios.html">Comentarios</a>
+        </nav>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Abrir menú" aria-expanded="false">
+            ☰
+        </button>
+    </header>
+
+    <main>
+
+        <!-- ANUNCIO PRINCIPAL -->
+        <section class="hero">
+
+            <div class="hero-content">
+                <span class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    SNOOPY CLUB PRESENTA
+                </span>
+
+                <h1>
+                    ¡Hey, you!<br>
+                    <span>News &</span><br>
+                    anuncios.
+                </h1>
+
+                <p class="hero-description">
+                    ¡Entérate de todo lo que pasa en el club!
+                    Novedades, actividades y sorpresas
+                    para nuestra comunidad.
+                </p>
+
+                <a href="#novedades" class="primary-button">
+                    Ver anuncios <span>↓</span>
+                </a>
+
+                <div class="hero-footer">
+                    <span class="status-dot"></span>
+                    <span>Actualizaciones del club</span>
+                    <span class="footer-line"></span>
+                    <strong>Good vibes only ☁</strong>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <div class="image-frame">
+                    <!-- Cambia esta ruta por tu imagen -->
+                    <img
+                        src="imagenes/snoopysip.jpg"
+                        alt="Imagen del anuncio principal de Snoopy Club"
+                    >
+
+                    <span class="image-sticker">
+                        GOOD<br>VIBES<br>ONLY
+                    </span>
+
+                    <div class="image-caption">
+                        <span>☁ SNOOPY CLUB</span>
+                        <span class="caption-divider"></span>
+                        <span>¡Algo nuevo te espera!</span>
+                    </div>
+                </div>
+
+                
+            </div>
+
+        </section>
+
+        
+<section class="announcements" id="novedades">
+
+    <div class="section-heading">
+        <div>
+            <span class="eyebrow">STAY TUNED ☁</span>
+            <h2>Últimas <span>novedades.</span></h2>
+        </div>
+
+        <p>Todo lo que necesitas saber,<br>en un solo lugar.</p>
+    </div>
+
+    <article class="featured-news">
+
+        <div class="news-image">
+            <img
+                src="imagenes/helloyoo.jpg"
+                alt="Imagen de la noticia de Snoopy Club"
+            />
+
+            <span class="news-tag">ANUNCIO OFICIAL</span>
+        </div>
+
+        <div class="news-content">
+
+            <span class="card-date">SNOOPY CLUB · NOVEDADES</span>
+
+            <h3>¡Karina te da la Bienvenida!</h3>
+
+            <p>
+                Es un honor tenerte aquí formando parte de nosotros.
+                Mi nombre es Karina Yoo, creadora de este hermoso team
+                y junto a mi staff te damos la bienvenida y te deseamos
+                una lara estadía con nosotros.
+            </p>
+
+            <p>
+                Te invitamos a seguir las reglas y conocer un poco más de 
+                nosotros mediante a la web, cualquier cosa me tienes a mi y 
+                a los demás miembros del staff.
+            
+            </p>
+
+            <div class="news-footer">
+                <span>☁ Snoopy Club</span>
+                <span>¡Good vibes only!</span>
+            </div>
+
+        </div>
+
+    </article>
+
+</section>
+
+
+        <!-- BANNER FINAL -->
+        <section class="closing-banner">
+            <div>
+                <span class="eyebrow">SNOOPY CLUB ☁</span>
+                <h2>Stay happy.<br>Stay curious.</h2>
+            </div>
+            <p>Las buenas noticias siempre<br>merecen compartirse.</p>
+            <span class="closing-star">✳</span>
+        </section>
+
+    </main>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="site-footer">
+        <a href="index.html" class="footer-brand">SNOOPYCLUB ☁</a>
+        <span>Un pequeño rincón para grandes fans.</span>
+        <span>© Snoopy Club</span>
+    </footer>
+
+    <script>
+        const menuToggle = document.getElementById("menuToggle");
+        const navLinks = document.getElementById("navLinks");
+
+        menuToggle.addEventListener("click", () => {
+            const isOpen = navLinks.classList.toggle("show");
+            menuToggle.setAttribute("aria-expanded", isOpen);
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,536 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reservas | ALMOND</title>
+ 
+    
+
+    <style>
+        :root {
+            --almond: #C1B5A6;
+            --chalk: #E6DFD7;
+            --espresso: #2B1915;
+            --white: #FFFFFF;
+            --text: #292321;
+            --muted: #77706A;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--white);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.6;
+            min-width: 320px;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* BARRA SUPERIOR */
+        .top-bar {
+            padding: 9px 15px;
+            background: var(--espresso);
+            color: var(--white);
+            text-align: center;
+            font-size: 9px;
+            letter-spacing: 2px;
+        }
+
+        /* MENÚ DE NAVEGACIÓN */
+        .header {
+            width: 100%;
+            min-height: 85px;
+            padding: 18px 6%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            flex-wrap: wrap;
+            background: var(--white);
+            border-bottom: 1px solid var(--chalk);
+        }
+
+        .logo {
+            flex-shrink: 0;
+            color: var(--espresso);
+            font-size: 30px;
+            font-weight: 800;
+            letter-spacing: -2px;
+        }
+
+        .logo span {
+            color: var(--almond);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 22px;
+        }
+
+        .nav a {
+            padding: 5px 0;
+            color: var(--text);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid transparent;
+            transition: 0.3s;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            color: var(--almond);
+            border-bottom-color: var(--espresso);
+        }
+
+        /* SECCIÓN DE RESERVAS */
+        .reservas-main {
+            min-height: 75vh;
+            padding: 75px 20px 90px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: var(--white);
+        }
+
+        .reservas-titulo {
+            margin-bottom: 12px;
+            color: var(--almond);
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-align: center;
+        }
+
+        .reservas-main h1 {
+            margin-bottom: 15px;
+            color: var(--espresso);
+            font-size: clamp(35px, 6vw, 55px);
+            line-height: 1.15;
+            letter-spacing: -2px;
+            text-align: center;
+        }
+
+        .reservas-descripcion {
+            max-width: 430px;
+            margin-bottom: 35px;
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        /* CUADRO PRINCIPAL */
+        .reserva-card {
+            width: 100%;
+            max-width: 460px;
+            padding: 35px;
+            background: var(--white);
+            border: 1px solid var(--chalk);
+        }
+
+        .reserva-card label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--espresso);
+            font-size: 11px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .campo-idol {
+            position: relative;
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .campo-idol input {
+            width: 100%;
+            min-width: 0;
+            padding: 14px 42px 14px 14px;
+            color: var(--espresso);
+            background: var(--white);
+            border: 1px solid var(--chalk);
+            outline: none;
+            font-size: 13px;
+            transition: border-color 0.2s;
+        }
+
+        .campo-idol input:focus {
+            border-color: var(--almond);
+        }
+
+        /* INDICADORES */
+        .indicador {
+            position: absolute;
+            right: 14px;
+            font-size: 17px;
+            font-weight: bold;
+            line-height: 1;
+        }
+
+        .disponible {
+            color: var(--espresso);
+        }
+
+        .ocupado {
+            color: var(--espresso);
+            font-size: 14px;
+        }
+
+        .estado {
+            min-height: 24px;
+            margin-bottom: 20px;
+            color: var(--muted);
+            font-size: 11px;
+        }
+
+        /* BOTÓN */
+        .btn-reservar {
+            width: 100%;
+            padding: 15px;
+            background: var(--espresso);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            font-size: 10px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: background 0.3s;
+        }
+
+        .btn-reservar:hover:not(:disabled) {
+            background: var(--almond);
+            color: var(--espresso);
+        }
+
+        .btn-reservar:disabled {
+            background: var(--chalk);
+            color: var(--muted);
+            cursor: not-allowed;
+        }
+
+        .nota {
+            margin-top: 18px;
+            color: var(--muted);
+            font-size: 10px;
+            text-align: center;
+        }
+
+        /* MENSAJE */
+        .mensaje {
+            margin-top: 18px;
+            padding: 12px;
+            border: 1px solid var(--chalk);
+            color: var(--espresso);
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .oculto {
+            display: none;
+        }
+
+        /* PIE DE PÁGINA */
+        .footer {
+            padding: 35px 20px 22px;
+            background: var(--espresso);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .footer .logo {
+            color: var(--white);
+        }
+
+        .footer p {
+            margin-top: 10px;
+            color: var(--chalk);
+            font-size: 12px;
+        }
+
+        .copyright {
+            margin-top: 22px;
+            padding-top: 18px;
+            border-top: 1px solid rgba(230, 223, 215, 0.2);
+            font-size: 10px;
+        }
+
+        /* TABLETAS Y CELULARES */
+        @media (max-width: 1000px) {
+            .header {
+                justify-content: center;
+                gap: 15px 30px;
+            }
+
+            .nav {
+                width: 100%;
+                gap: 12px 20px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .top-bar {
+                font-size: 8px;
+                letter-spacing: 1px;
+            }
+
+            .header {
+                padding: 18px 5%;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo {
+                font-size: 28px;
+            }
+
+            .nav {
+                gap: 10px 16px;
+            }
+
+            .nav a {
+                font-size: 9px;
+            }
+
+            .reservas-main {
+                padding: 60px 18px;
+            }
+
+            .reserva-card {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="top-bar">
+        RESERVA TU IDOL FAVORITO · ALMOND
+    </div>
+
+    <header class="header">
+        <a href="index.html" class="logo">ALM<span>OND</span></a>
+
+        <nav class="nav">
+            <a href="index.html">Quiénes somos</a>
+            <a href="integrantes.html">Integrantes</a>
+            <a href="reservas.html" class="active">Reservas</a>
+            <a href="inicio-sesion.html">Inicio de sesión</a>
+            <a href="comentarios.html">Comentarios</a>
+        </nav>
+    </header>
+
+    <main class="reservas-main">
+
+        <p class="reservas-titulo">TU PRÓXIMA RESERVA</p>
+
+        <h1>Ingresa tu idol</h1>
+
+        <p class="reservas-descripcion">
+            Escribe el nombre del idol que deseas reservar
+            y comprueba si todavía está disponible.
+        </p>
+
+        <section class="reserva-card">
+
+            <label for="idol">Nombre del idol</label>
+
+            <div class="campo-idol">
+                <input
+                    type="text"
+                    id="idol"
+                    placeholder="Ej. Sunghoon"
+                    autocomplete="off"
+                >
+
+                <span id="indicador" class="indicador"></span>
+            </div>
+
+            <p id="estado" class="estado" aria-live="polite">
+                Escribe un nombre para comprobar su disponibilidad.
+            </p>
+
+            <button
+                type="button"
+                id="btnReservar"
+                class="btn-reservar"
+                disabled
+            >
+                RESERVAR
+            </button>
+
+            <p class="nota">
+                Las reservas estarán sujetas a disponibilidad.
+            </p>
+
+            <div
+                id="mensaje"
+                class="mensaje oculto"
+                role="status"
+                aria-live="polite"
+            ></div>
+
+        </section>
+    </main>
+
+    <footer class="footer">
+        <a href="index.html" class="logo">ALM<span>OND</span></a>
+
+        <p>Un lugar para reservar a tus favoritos.</p>
+
+        <div class="copyright">
+            © 2026 ALMOND. Todos los derechos reservados.
+        </div>
+    </footer>
+
+    <script type="module">
+        import { supabase } from "./supabase.js";
+
+        const entradaIdol = document.getElementById("idol");
+        const indicador = document.getElementById("indicador");
+        const estado = document.getElementById("estado");
+        const btnReservar = document.getElementById("btnReservar");
+        const mensaje = document.getElementById("mensaje");
+
+        let idolDisponible = false;
+        let comprobacionActual = 0;
+
+        function limpiarIndicador() {
+            indicador.textContent = "";
+            indicador.className = "indicador";
+            btnReservar.disabled = true;
+            idolDisponible = false;
+        }
+
+        function mostrarMensaje(texto) {
+            mensaje.textContent = texto;
+            mensaje.classList.remove("oculto");
+        }
+
+        entradaIdol.addEventListener("input", async function () {
+            const nombre = entradaIdol.value.trim();
+            const comprobacion = ++comprobacionActual;
+
+            limpiarIndicador();
+            mensaje.classList.add("oculto");
+
+            if (!nombre) {
+                estado.textContent =
+                    "Escribe un nombre para comprobar su disponibilidad.";
+                return;
+            }
+
+            estado.textContent = "Comprobando disponibilidad…";
+
+            try {
+                const { data, error } = await supabase.rpc(
+                    "consultar_idol",
+                    { p_nombre: nombre }
+                );
+
+                if (comprobacion !== comprobacionActual) return;
+
+                if (error) throw error;
+
+                const estadoIdol = String(data ?? "").trim().toLowerCase();
+
+                if (!estadoIdol) {
+                    estado.textContent =
+                        "No encontramos ese idol en nuestra lista. Revisa el nombre.";
+                    return;
+                }
+
+                if (estadoIdol === "disponible") {
+                    indicador.textContent = "✓";
+                    indicador.classList.add("disponible");
+                    estado.textContent =
+                        "¡Está disponible! Puedes reservarlo.";
+                    idolDisponible = true;
+                    btnReservar.disabled = false;
+                } else {
+                    indicador.textContent = "×";
+                    indicador.classList.add("ocupado");
+                    estado.textContent =
+                        "Este idol no está disponible. Prueba con otro.";
+                }
+            } catch (error) {
+                if (comprobacion !== comprobacionActual) return;
+                console.error("Error al consultar el idol:", error);
+                estado.textContent =
+                    "No pudimos comprobar la disponibilidad. Inténtalo de nuevo.";
+            }
+        });
+
+        btnReservar.addEventListener("click", async function () {
+            if (!idolDisponible) return;
+
+            const nombre = entradaIdol.value.trim();
+            btnReservar.disabled = true;
+            entradaIdol.disabled = true;
+            estado.textContent = "Guardando tu reserva…";
+            mensaje.classList.add("oculto");
+
+            try {
+                const { data, error } = await supabase.rpc(
+                    "reservar_idol",
+                    { p_nombre: nombre }
+                );
+
+                if (error) throw error;
+
+                const resultado = String(data ?? "").trim().toLowerCase();
+
+                if (resultado === "reservado") {
+                    indicador.textContent = "×";
+                    indicador.className = "indicador ocupado";
+                    estado.textContent = "Este idol ya aparece como ocupado.";
+                    mostrarMensaje("¡Reserva de " + nombre + " guardada correctamente!");
+                    idolDisponible = false;
+                } else if (resultado === "no_disponible") {
+                    indicador.textContent = "×";
+                    indicador.className = "indicador ocupado";
+                    estado.textContent =
+                        "Alguien reservó este idol antes. Prueba con otro.";
+                    idolDisponible = false;
+                } else if (resultado === "no_encontrado") {
+                    estado.textContent =
+                        "No encontramos ese idol en nuestra lista. Revisa el nombre.";
+                    idolDisponible = false;
+                } else {
+                    estado.textContent =
+                        "No se pudo completar la reserva. Inténtalo de nuevo.";
+                    idolDisponible = false;
+                }
+            } catch (error) {
+                console.error("Error al guardar la reserva:", error);
+                estado.textContent =
+                    "No pudimos guardar la reserva. Comprueba la conexión e inténtalo otra vez.";
+                mostrarMensaje("La reserva no se confirmó. No vuelvas a intentarlo hasta revisar el estado.");
+                idolDisponible = false;
+            } finally {
+                entradaIdol.disabled = false;
+                btnReservar.disabled = true;
+            }
+        });
+    </script>
+
+</body>
+</html>

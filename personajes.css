@@ -1,0 +1,526 @@
+
+/* ==================================
+   PERSONAJES - SNOOPY CLUB
+================================== */
+
+
+/* COLORES GENERALES */
+
+.personajes-main {
+    --amarillo: #FFE162;
+    --rojo: #A01717;
+    --crema: #FFF9E8;
+    --blanco: #FFFEFA;
+    --negro: #211B19;
+    --gris: #756D63;
+    --borde: #E8E0D5;
+
+    background-color: var(--blanco);
+    color: var(--negro);
+    padding: 0 7% 70px;
+}
+
+
+/* ==================================
+   ENCABEZADO
+================================== */
+
+.personajes-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+
+    padding: 22px 7%;
+    background-color: #FFFEFA;
+    border-bottom: 1px solid #E8E0D5;
+}
+
+.personajes-header .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+
+    color: #211B19;
+    font-size: 19px;
+    font-weight: 900;
+    letter-spacing: -0.8px;
+    white-space: nowrap;
+}
+
+.personajes-header .logo-icon {
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+
+    width: 42px;
+    height: 42px;
+    overflow: hidden;
+
+    background-color: #FFE162;
+    border: 1px solid #211B19;
+    border-radius: 50%;
+}
+
+.personajes-header .logo-icon img {
+    width: 75%;
+    height: 75%;
+    object-fit: contain;
+}
+
+.personajes-nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 27px;
+}
+
+.personajes-nav a {
+    color: #756D63;
+    font-size: 13px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.personajes-nav a:hover,
+.personajes-nav a.activo {
+    color: #A01717;
+}
+
+@media (max-width: 900px) {
+    .personajes-header {
+        padding: 20px 5%;
+    }
+
+    .personajes-nav {
+        gap: 18px;
+    }
+}
+
+@media (max-width: 650px) {
+    .personajes-header {
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 15px;
+    }
+
+    .personajes-nav {
+        flex-wrap: wrap;
+        gap: 12px 20px;
+    }
+
+    .personajes-nav a {
+        font-size: 12px;
+    }
+}
+
+/* ==================================
+   INTRODUCCIÓN
+================================== */
+
+.personajes-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 75px 15px 55px;
+}
+
+.personajes-etiqueta {
+    display: inline-block;
+    margin-bottom: 17px;
+
+    color: #A01717;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 4px;
+}
+
+.personajes-intro h1 {
+    margin: 0;
+
+    font-size: clamp(35px, 5vw, 58px);
+    font-weight: 800;
+    letter-spacing: -2.5px;
+    line-height: 1.15;
+}
+
+.personajes-intro h1 span {
+    color: #A01717;
+}
+
+.personajes-descripcion {
+    max-width: 460px;
+    margin: 20px auto 0;
+
+    color: #756D63;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.decoracion-titulo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 13px;
+
+    margin-top: 27px;
+}
+
+.decoracion-titulo span:not(.estrella) {
+    width: 45px;
+    height: 1px;
+    background-color: #E8E0D5;
+}
+
+.estrella {
+    color: #E5B93D;
+    font-size: 17px;
+}
+
+
+/* ==================================
+   GALERÍA DE PERSONAJES
+================================== */
+
+.galeria-personajes {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 30px;
+
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+
+/* TARJETAS BLANCAS */
+
+.personaje-card {
+    min-width: 0;
+    overflow: hidden;
+
+    background-color: #FFFFFF;
+    border: 1px solid #E8E0D5;
+    border-radius: 19px;
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease,
+        border-color 0.3s ease;
+}
+
+.personaje-card:hover {
+    transform: translateY(-6px);
+    border-color: #D8C8B5;
+
+    box-shadow: 0 12px 25px rgba(33, 27, 25, 0.08);
+}
+
+
+/* IMÁGENES CON FONDO BLANCO */
+
+.personaje-imagen {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 245px;
+    padding: 22px;
+
+    background-color: #FFFFFF;
+    overflow: hidden;
+}
+
+/* Todas las tarjetas tendrán el mismo fondo */
+
+.personaje-card:nth-child(n) .personaje-imagen {
+    background-color: #FFFFFF;
+}
+
+.personaje-imagen img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+
+    transition: transform 0.4s ease;
+}
+
+.personaje-card:hover .personaje-imagen img {
+    transform: scale(1.06);
+}
+
+
+/* NÚMERO DE CADA PERSONAJE */
+
+.personaje-numero {
+    position: absolute;
+    top: 13px;
+    left: 14px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 29px;
+    height: 29px;
+
+    border-radius: 50%;
+    background-color: #FFFFFF;
+
+    color: #756D63;
+    font-size: 10px;
+    font-weight: 700;
+}
+
+
+/* INFORMACIÓN */
+
+.personaje-info {
+    padding: 20px 20px 23px;
+    text-align: center;
+
+    background-color: #FFFFFF;
+}
+
+.personaje-info h2 {
+    margin: 0 0 9px;
+
+    color: #211B19;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.personaje-info p {
+    margin: 0;
+
+    color: #756D63;
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+
+/* ==================================
+   MENSAJE FINAL
+================================== */
+
+.personajes-final {
+    max-width: 650px;
+    margin: 95px auto 0;
+    padding: 40px 20px;
+
+    text-align: center;
+
+    background-color: #FFFFFF;
+    border: 1px solid #E8E0D5;
+    border-radius: 20px;
+}
+
+.final-estrella {
+    color: #D7A92D;
+    font-size: 23px;
+}
+
+.personajes-final h2 {
+    margin: 14px 0 12px;
+
+    color: #211B19;
+    font-size: clamp(22px, 3vw, 30px);
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.personajes-final p {
+    max-width: 390px;
+    margin: 0 auto;
+
+    color: #756D63;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.final-firma {
+    display: block;
+    margin-top: 23px;
+
+    color: #A01717;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+
+/* ==================================
+   PIE DE PÁGINA
+================================== */
+
+.personajes-footer {
+    padding: 23px 15px;
+
+    text-align: center;
+    background-color: #FFFEFA;
+    border-top: 1px solid #E8E0D5;
+}
+
+.personajes-footer p {
+    margin: 0;
+
+    color: #756D63;
+    font-size: 11px;
+}
+
+
+/* ==================================
+   TABLETS
+================================== */
+
+@media (max-width: 900px) {
+
+    .personajes-header {
+        padding: 20px 5%;
+    }
+
+    .personajes-nav {
+        gap: 18px;
+    }
+
+    .personajes-main {
+        padding-right: 5%;
+        padding-left: 5%;
+    }
+
+    .galeria-personajes {
+        gap: 20px;
+    }
+
+    .personaje-imagen {
+        height: 210px;
+        padding: 17px;
+    }
+
+    .personaje-info {
+        padding: 18px 12px 21px;
+    }
+
+}
+
+
+/* ==================================
+   CELULARES
+================================== */
+
+@media (max-width: 650px) {
+
+    .personajes-header {
+        flex-direction: column;
+        gap: 18px;
+
+        padding: 20px 15px;
+    }
+
+    .personajes-nav {
+        flex-wrap: wrap;
+        gap: 12px 20px;
+    }
+
+    .personajes-nav a {
+        font-size: 12px;
+    }
+
+    .personajes-main {
+        padding-right: 18px;
+        padding-left: 18px;
+    }
+
+    .personajes-intro {
+        padding: 55px 5px 40px;
+    }
+
+    .personajes-intro h1 {
+        letter-spacing: -1.5px;
+    }
+
+    .personajes-etiqueta {
+        font-size: 9px;
+        letter-spacing: 3px;
+    }
+
+    .personajes-descripcion {
+        font-size: 13px;
+    }
+
+    .galeria-personajes {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+
+    .personaje-card {
+        border-radius: 14px;
+    }
+
+    .personaje-imagen {
+        height: 175px;
+        padding: 12px;
+    }
+
+    .personaje-info {
+        padding: 15px 9px 18px;
+    }
+
+    .personaje-info h2 {
+        font-size: 15px;
+    }
+
+    .personaje-info p {
+        font-size: 11px;
+    }
+
+    .personaje-numero {
+        top: 8px;
+        left: 8px;
+
+        width: 24px;
+        height: 24px;
+        font-size: 9px;
+    }
+
+    .personajes-final {
+        margin-top: 60px;
+        padding: 32px 18px;
+    }
+
+}
+
+
+/* ==================================
+   CELULARES PEQUEÑOS
+================================== */
+
+@media (max-width: 380px) {
+
+    .personajes-main {
+        padding-right: 12px;
+        padding-left: 12px;
+    }
+
+    .galeria-personajes {
+        gap: 10px;
+    }
+
+    .personaje-imagen {
+        height: 145px;
+        padding: 9px;
+    }
+
+    .personaje-info h2 {
+        font-size: 13px;
+    }
+
+    .personaje-info p {
+        font-size: 10px;
+    }
+
+}

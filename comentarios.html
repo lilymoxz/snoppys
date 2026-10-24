@@ -1,0 +1,250 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Comentarios | Snoopy Club</title>
+
+    <link rel="stylesheet" href="comentarios.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="navbar">
+
+        <a href="index.html" class="brand">
+            <span class="logo">
+                <svg viewBox="0 0 40 32" aria-hidden="true">
+                    <path d="M10 25C4 25 2 21 3 16c1-5 6-7 11-6
+                    C16 3 23 2 27 8c7-1 11 3 10 9
+                    0 5-4 8-9 8H10Z" fill="#29211e"/>
+                </svg>
+            </span>
+
+            <span class="brand-name">SNOOPYCLUB</span>
+        </a>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="index.html">About us</a>
+            <a href="integrantes.html">Integrantes</a>
+            <a href="games.html">Games</a>
+            <a href="personajes.html">Personajes</a>
+            <a href="anuncios.html">Anuncios</a>
+            <a href="comentarios.html" class="active">Comentarios</a>
+        </nav>
+
+        <button class="menu-toggle" id="menuToggle"
+                aria-label="Abrir menú" aria-expanded="false">
+            ☰
+        </button>
+
+    </header>
+
+    <main>
+
+        <!-- PORTADA -->
+        <section class="comments-hero">
+
+            <div class="hero-text">
+                <span class="eyebrow">
+                    <span class="eyebrow-dot"></span>
+                    YOUR VOICE MATTERS
+                </span>
+
+                <h1>
+                    Tu opinión,<br>
+                    <span>nuestro</span><br>
+                    team.
+                </h1>
+
+                <p>
+                    Este también es tu espacio.
+                    Cuéntanos qué piensas de Snoopy Club,
+                    comparte tu experiencia y deja tu valoración.
+                </p>
+
+                <a href="#dejar-comentario" class="primary-button">
+                    Dejar un comentario ↓
+                </a>
+
+                <div class="hero-signature">
+                    ☁ Un pequeño rincón para grandes fans.
+                </div>
+            </div>
+
+            <div class="hero-card">
+                <span class="hero-card-label">SNOOPY CLUB ★</span>
+
+                <div class="hero-stars" aria-hidden="true">
+                    ★ ★ ★ ★ ★
+                </div>
+
+                <h2>¡Tu voz cuenta!</h2>
+
+                <p>
+                    Cada opinión ayuda a que nuestra comunidad
+                    siga creciendo.
+                </p>
+
+                <div class="hero-card-bottom">
+                    GOOD VIBES ONLY ☁
+                </div>
+            </div>
+
+        </section>
+
+        <!-- FORMULARIO -->
+        <section class="comments-section" id="dejar-comentario">
+
+            <div class="section-heading">
+                <div>
+                    <span class="eyebrow">LET'S TALK ☁</span>
+                    <h2>Déjanos tu <span>opinión.</span></h2>
+                </div>
+
+                <p>
+                    Sé amable, comparte tu experiencia<br>
+                    y forma parte de la conversación.
+                </p>
+            </div>
+
+            <div class="comment-form-card">
+
+                <div class="form-heading">
+                    <div class="form-icon">✳</div>
+                    <div>
+                        <h3>¿Qué piensas de nuestro team?</h3>
+                        <p>Nos encantaría conocer tu opinión.</p>
+                    </div>
+                </div>
+
+                <form id="commentForm">
+
+                    <label for="userName">Tu nombre</label>
+
+                    <input
+                        type="text"
+                        id="userName"
+                        name="userName"
+                        placeholder="¿Cómo te llamas?"
+                        maxlength="50"
+                        required
+                    >
+
+                    <label for="userComment">Tu comentario</label>
+
+                    <textarea
+                        id="userComment"
+                        name="userComment"
+                        placeholder="Cuéntanos qué piensas del team..."
+                        maxlength="1000"
+                        rows="5"
+                        required
+                    ></textarea>
+
+                    <div class="rating-area">
+                        <div>
+                            <label class="rating-title">
+                                Tu valoración
+                            </label>
+                            <p>Selecciona de 1 a 5 estrellas.</p>
+                        </div>
+
+                        <div class="star-picker"
+                             id="starPicker"
+                             role="group"
+                             aria-label="Selecciona tu valoración">
+
+                            <button type="button" class="star-button"
+                                    data-rating="1" aria-label="1 estrella">★</button>
+                            <button type="button" class="star-button"
+                                    data-rating="2" aria-label="2 estrellas">★</button>
+                            <button type="button" class="star-button"
+                                    data-rating="3" aria-label="3 estrellas">★</button>
+                            <button type="button" class="star-button"
+                                    data-rating="4" aria-label="4 estrellas">★</button>
+                            <button type="button" class="star-button"
+                                    data-rating="5" aria-label="5 estrellas">★</button>
+
+                        </div>
+                    </div>
+
+                    <p class="form-error" id="formError" role="alert"></p>
+
+                    <div class="form-actions">
+                        <span class="privacy-note">
+                            ☁ Comparte siempre con respeto.
+                        </span>
+
+                        <button type="submit" class="submit-button"
+                                id="submitButton">
+                            Guardar comentario ↗
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <!-- COMENTARIOS PUBLICADOS -->
+            <div class="published-section">
+
+                <div class="published-heading">
+                    <div>
+                        <span class="eyebrow">THE COMMUNITY</span>
+                        <h2>Lo que dice el <span>team.</span></h2>
+                    </div>
+
+                    <span class="comment-count" id="commentCount">
+                        0 comentarios
+                    </span>
+                </div>
+
+                <div class="comments-list" id="commentsList">
+                    <!-- Los comentarios se insertan con JavaScript -->
+                </div>
+
+                <div class="empty-state" id="emptyState">
+                    <div class="empty-icon">☁</div>
+                    <h3>¡Sé la primera persona en comentar!</h3>
+                    <p>Tu opinión puede iniciar una gran conversación.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- BANNER FINAL -->
+        <section class="closing-banner">
+            <div>
+                <span class="eyebrow">SNOOPY CLUB ☁</span>
+                <h2>Good vibes.<br>Great community.</h2>
+            </div>
+
+            <p>
+                Todas las opiniones respetuosas<br>
+                tienen un lugar aquí.
+            </p>
+
+            <span class="closing-star">✳</span>
+        </section>
+
+    </main>
+
+    <footer class="site-footer">
+        <a href="index.html" class="footer-brand">SNOOPYCLUB ☁</a>
+        <span>Un pequeño rincón para grandes fans.</span>
+        <span>© Snoopy Club</span>
+    </footer>
+
+    <script src="comentarios.js"></script>
+
+</body>
+</html>
